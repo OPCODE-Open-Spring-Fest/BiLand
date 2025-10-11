@@ -397,6 +397,31 @@ footer {
   font-size: 0.95rem;
 }
 
+/* Back to Top Button Styles */
+#backToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 1000;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border: none;
+    outline: none;
+    padding: 12px 20px;
+    border-radius: 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: background 0.2s, box-shadow 0.2s;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+#backToTopBtn:hover {
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    box-shadow: 0 4px 16px rgba(255,107,53,0.18);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-container {
