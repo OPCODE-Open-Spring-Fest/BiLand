@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initInteractiveElements();
     initAccessibility();
     initProgressiveEnhancement();
+    initQuiz(); // attach quiz logic if present
 });
 
 // Navigation enhancements
@@ -286,6 +287,38 @@ function initProgressiveEnhancement() {
             }, 0);
         });
     }
+}
+
+// Quiz initialization and logic
+function initQuiz() {
+    const form = document.getElementById('bihar-quiz');
+    if (!form) return;
+    const result = document.getElementById('quiz-result');
+    const answers = {
+        q1: 'bodh',
+        q2: 'nalanda',
+        q3: 'chhath',
+        q4: 'patna',
+        q5: 'valmiki'
+    };
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let score = 0;
+        for (const [q, correct] of Object.entries(answers)) {
+            const group = form.elements[q];
+            if (group && group.value === correct) score++;
+        }
+
+        let message = '';
+        if (score === 5) message = 'Incredible! You’re a Bihar Boss!';
+        else if (score >= 4) message = 'Great job! Bhojpuri Bravo!';
+        else if (score >= 3) message = 'Nice! You’re on the Patna path.';
+        else if (score >= 2) message = 'Not bad! Keep exploring Bihar.';
+        else message = 'Time to tour Bihar’s wonders!';
+
+        if (result) result.textContent = 'You scored ' + score + '/5. ' + message;
+    });
 }
 
 // Utility functions for future enhancements

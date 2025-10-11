@@ -34,10 +34,58 @@
       <h2>Valmiki Tiger Reserve</h2>
       <p>A natural reserve in West Champaran for wildlife lovers.</p>
     </section>
+
+    <section id="quiz">
+      <h2>Quick Quiz: Bihar’s history, culture, and landmarks</h2>
+      <form id="bihar-quiz">
+        <fieldset>
+          <legend>1) Where did Lord Buddha attain enlightenment?</legend>
+          <label><input type="radio" name="q1" value="bodh" required> Bodh Gaya</label>
+          <label><input type="radio" name="q1" value="rajgir"> Rajgir</label>
+          <label><input type="radio" name="q1" value="vaishali"> Vaishali</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>2) Which ancient university in Bihar is a UNESCO World Heritage Site?</legend>
+          <label><input type="radio" name="q2" value="takshashila" required> Takshashila</label>
+          <label><input type="radio" name="q2" value="nalanda"> Nalanda</label>
+          <label><input type="radio" name="q2" value="vikramshila"> Vikramshila</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>3) The festival where devotees worship the Sun God is:</legend>
+          <label><input type="radio" name="q3" value="chhath" required> Chhath Puja</label>
+          <label><input type="radio" name="q3" value="holi"> Holi</label>
+          <label><input type="radio" name="q3" value="diwali"> Diwali</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>4) The capital city of Bihar is:</legend>
+          <label><input type="radio" name="q4" value="gaya" required> Gaya</label>
+          <label><input type="radio" name="q4" value="patna"> Patna</label>
+          <label><input type="radio" name="q4" value="muzaffarpur"> Muzaffarpur</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>5) The wildlife reserve in West Champaran is:</legend>
+          <label><input type="radio" name="q5" value="valmiki" required> Valmiki Tiger Reserve</label>
+          <label><input type="radio" name="q5" value="kuno"> Kuno National Park</label>
+          <label><input type="radio" name="q5" value="kaziranga"> Kaziranga National Park</label>
+        </fieldset>
+
+        <div class="quiz-actions">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+        </div>
+      </form>
+      <div id="quiz-result" role="status" aria-live="polite"></div>
+    </section>
   </main>
 
   <footer>
     <p>Contributors can add more tourist spots!</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
