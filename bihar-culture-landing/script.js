@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initAccessibility();
     initProgressiveEnhancement();
     initQuiz(); // attach quiz logic if present
+    initBackToTop(); // initialize back-to-top button across pages
 });
 
 // Navigation enhancements
@@ -447,4 +448,69 @@ document.head.appendChild(style);
 // Export for module usage (if needed)
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = BiharCulture;
+}
+
+// Back to Top button: create a single reusable button and behavior across pages
+function initBackToTop() {
+    try {
+        if (document.getElementById('backToTopBtn')) return; // already present
+
+        const btn = document.createElement('button');
+        btn.id = 'backToTopBtn';
+        btn.type = 'button';
+        btn.title = 'Back to Top';
+        btn.setAttribute('aria-label', 'Back to top');
+        btn.innerHTML = '↑';
+        btn.style.display = 'none';
+
+        // Make sure the button is added after the rest of content
+        document.body.appendChild(btn);
+
+        const showThreshold = 200;
+
+        const updateVisibility = () => {
+            const scrolled = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrolled > showThreshold) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
+        };
+
+        // Throttle using requestAnimationFrame for better perf
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateVisibility();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // Smooth scroll while respecting user preference for reduced motion
+        btn.addEventListener('click', () => {
+            const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReduced) {
+                window.scrollTo(0, 0);
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            btn.blur();
+        });
+
+        // Keyboard accessibility (Enter/Space)
+        btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                btn.click();
+            }
+        });
+
+        // Initialize visibility on load
+        updateVisibility();
+    } catch (err) {
+        console.error('BackToTop initialization failed:', err);
+    }
 }
