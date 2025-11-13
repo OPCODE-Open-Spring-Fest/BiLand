@@ -766,4 +766,76 @@ body.dark-mode .theme-toggle-btn .moon {
   gap: 2rem;
   margin-bottom: 4rem;
 }
+#text{
+  text-align: center;
+  color: aliceblue;
+  background-color: #2c3e50;
+}
+#sidemain{
+  background-color: #ff6b35;
+  height: 100%;
+  width: 100%;
+}
+
+#personalities{
+  background-color: #ff6b35;
+  display: flex;
+  align-items: center;
+
+  border-bottom: #2c3e50 solid 2px;
+}
+
+.pic{
+  width: 50%;
+
+}
+#aryabhatta .pic img{
+  object-fit: cover;
+   width: 450px;
+  height: 400px;
+  
+}
+#aryabhatta{
+  display: flex;
+  margin-top: 90px;
+   border-bottom: #2c3e50 solid 2px;
+}
+.intro{
+  width: 50%;
+  padding-left: 5px;
+  border-left: 2px solid black;
+}
+#anand{
+  width: 100%;
+
+  display: flex;
+  margin-top: 50px;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  border-bottom: #2c3e50 solid 2px;
+}
+#anand .intro{
+  border-right: 2px solid black;
+}
+#anand .pic{
+  flex: 0 0 ;
+ 
+  padding-right: 5px;
+}
+
+#bismil{
+  margin-top: 70px;
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+
+}
+#bismil .intro{
+  border-right: 2px solid black;
+}
+#bismil .pic{
+  padding-left: 35px;
+}
+
 
