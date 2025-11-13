@@ -4,6 +4,37 @@
   padding: 0;
   box-sizing: border-box;
 }
+.footer-links li a:hover {
+  color: #e8541f;              /* Orange hover matches theme */
+}
+.footer-section {
+  background-color: rgb(240, 242, 227);
+  text-align: center;
+  color: #e8541f;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+.footer-links li a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+
+.footer-links {
+  
+  display: flex;
+  justify-content: center;     
+  align-items: center;
+  flex-wrap: wrap;             
+  gap: 25px;               
+  list-style: none;            
+  padding: 0;
+  margin: 15px 0;
+}
 
 /* CSS Custom Properties for consistent theming */
 :root {
