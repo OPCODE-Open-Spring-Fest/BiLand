@@ -7,14 +7,14 @@
 
 /* CSS Custom Properties for consistent theming */
 :root {
-  --primary-color: #ff6b35;
-  --secondary-color: #f7931e;
-  --accent-color: #e8541f;
-  --dark-color: #2c3e50;
-  --light-color: #ecf0f1;
+  --primary-color: #0ea5ff; /* modern sky blue */
+  --secondary-color: #7c3aed; /* modern violet */
+  --accent-color: #06b6d4; /* cyan/teal accent */
+  --dark-color: #071233; /* deep navy for strong contrast */
+  --light-color: #f5f7fb;
   --white: #ffffff;
-  --text-dark: #2c3e50;
-  --text-light: #7f8c8d;
+  --text-dark: #0b1220;
+  --text-light: #040506;
   --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
   --border-radius: 12px;
@@ -24,21 +24,100 @@
 }
 
 .darkmode{
-  --primary-color: #432323;
-  --secondary-color: #2F5755;
-  --accent-color: #5A9690;
-  --dark-color: #2c3e50;
-  --light-color: #ecf0f1;
+  /* Keep primary/secondary similar but ensure readable contrasts */
+  --primary-color: #0ea5ff;
+  --secondary-color: #6d28d9;
+  --accent-color: #06b6d4;
+  --dark-color: #071233;
+  --light-color: #0b1220;
   --white: #ffffff;
-  --text-dark: #2c3e50;
-  --text-light: #7f8c8d;
-  background-color: black;
-  --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+  --text-dark: #e6eef8; /* main text becomes light */
+  --text-light: #bcd0e6; /* secondary text muted but readable */
+  background-color: var(--dark-color);
+  --shadow: 0 4px 12px rgba(2,6,23,0.6);
+  --shadow-hover: 0 8px 20px rgba(2,6,23,0.7);
   --border-radius: 12px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Dark mode component overrides for better contrast */
+.darkmode body {
+  background-color: var(--dark-color);
+  color: var(--text-dark);
+}
+
+.darkmode p,
+.darkmode li,
+.darkmode a,
+.darkmode span,
+.darkmode h1,
+.darkmode h2,
+.darkmode h3,
+.darkmode h4 {
+  color: var(--text-dark);
+}
+
+.darkmode p { color: var(--text-light); }
+
+.darkmode .main-navigation {
+  background: rgba(8,16,32,0.9);
+  border-bottom-color: rgba(14,165,255,0.12);
+}
+
+.darkmode .nav-link {
+  background: transparent;
+  color: var(--text-dark);
+  border-color: transparent;
+}
+
+.darkmode .nav-link:hover,
+.darkmode .nav-link.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  box-shadow: var(--shadow-hover);
+}
+
+.darkmode header,
+.darkmode .hero-section,
+.darkmode .feature-card,
+.darkmode .highlights-section,
+.darkmode .call-to-action,
+.darkmode .quiz-section,
+.darkmode .location-card {
+  background: rgba(8,12,24,0.6);
+  color: var(--text-dark);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.5);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.darkmode .feature-card .card-icon,
+.darkmode .highlight-item h4,
+.darkmode .cta-content h2 {
+  color: var(--primary-color);
+}
+
+.darkmode .footer-section,
+.darkmode .footer-info,
+.darkmode footer {
+  background: transparent;
+  color: var(--text-light);
+}
+
+.darkmode .footer-links a {
+  color: var(--text-light);
+}
+
+.darkmode .explore-link,
+.darkmode .map-link,
+.darkmode .cta-button {
+  color: var(--primary-color);
+}
+
+.darkmode #backToTopBtn {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
 }
 
 /* Import Google Fonts */
@@ -425,23 +504,86 @@ header::before {
   background: var(--light-color);
 }
 
-/* Footer */
+/* Footer (responsive) */
 footer {
-  background: var(--dark-color);
+  background: linear-gradient(135deg, var(--dark-color) 0%, rgba(7,18,51,0.85) 100%);
   color: var(--white);
-  text-align: center;
   padding: 3rem 2rem;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.footer-content p {
-  margin-bottom: 0.5rem;
-  color: rgba(255, 255, 255, 0.8);
+/* Left: link groups / sitemap */
+.footer-section {
+  flex: 1 1 420px;
+  min-width: 220px;
+  text-align: left;
 }
 
-.footer-content p:last-child {
-  margin-bottom: 0;
-  font-size: 0.95rem;
+.footer-section h3 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem 1rem;
+}
+
+.footer-links a {
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+  padding: 0.25rem 0;
+  transition: color 0.2s ease;
+}
+
+.footer-links a h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.footer-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Right: small info / copyright */
+.footer-info {
+  flex: 0 0 320px;
+  min-width: 220px;
+  text-align: left;
+  align-self: center;
+}
+
+.footer-info p {
+  margin: 0.25rem 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-section, .footer-info {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+  .footer-section h3 { text-align: center; }
+  .footer-links { justify-items: center; }
+  .footer-info { align-self: center; }
 }
 
 /* Back to Top Button Styles */
@@ -761,4 +903,81 @@ body.dark-mode .theme-toggle-btn .moon {
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
+}
+
+/* Modern page specific styles (modern.html) */
+.sub-hero {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+#sidemain {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#personalities, #anand, #aryabhatta, #bismil {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+  align-items: center;
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.pic {
+  text-align: center;
+}
+
+.pic img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 0.75rem;
+}
+
+.pic h2 {
+  margin-top: 0.5rem;
+  color: var(--primary-color);
+}
+
+.intro h3 {
+  font-weight: 400;
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+/* Specific tweaks for larger images in some blocks */
+#anand .pic img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  #personalities, #anand, #aryabhatta, #bismil {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .pic {
+    order: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .sub-hero h1 {
+    font-size: 1.6rem;
+  }
+  .intro h3 {
+    font-size: 0.95rem;
+  }
+  #sidemain { padding: 0.5rem; }
 }
